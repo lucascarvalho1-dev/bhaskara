@@ -51,6 +51,12 @@ class AplicacaoBhaskara:
             command=self.calcular,
         ).pack(fill="x", pady=(12, 0))
 
+        ttk.Button(
+            painel_esquerdo,
+            text="Limpar",
+            command=self.limpar,
+        ).pack(fill="x", pady=(6, 0))
+
         self.resultados = Resultados(painel_esquerdo)
         self.resultados.pack(fill="x", pady=(12, 0))
 
@@ -85,6 +91,11 @@ class AplicacaoBhaskara:
             configuracao["tema"],
             configuracao["grade"],
         )
+
+    def limpar(self):
+        self.entrada.limpar()
+        self.resultados.limpar()
+        self.grafico.limpar()
 
     def executar(self):
         """Inicia o loop de eventos da janela."""

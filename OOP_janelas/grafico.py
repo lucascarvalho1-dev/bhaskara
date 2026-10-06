@@ -19,6 +19,8 @@ class GraficoParabola(tk.Frame):
 
     def _mostrar_mensagem_inicial(self):
         self.eixo.clear()
+        self.figure.patch.set_facecolor("#ffffff")
+        self.eixo.set_facecolor("#ffffff")
         self.eixo.text(
             0.5,
             0.5,
@@ -29,6 +31,9 @@ class GraficoParabola(tk.Frame):
         )
         self.eixo.set_axis_off()
         self.canvas.draw_idle()
+
+    def limpar(self):
+        self._mostrar_mensagem_inicial()
 
     def exibir(self, equacao, pontos, vertice, raizes, tema, grade):
         valores_x, valores_y = pontos

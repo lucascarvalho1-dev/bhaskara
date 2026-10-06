@@ -34,9 +34,12 @@ class Entrada(ttk.LabelFrame):
 
         for linha, (rotulo, variavel) in enumerate(campos):
             ttk.Label(self, text=rotulo).grid(row=linha, column=0, sticky="w", pady=3)
-            ttk.Entry(self, textvariable=variavel, width=14).grid(
+            campo = ttk.Entry(self, textvariable=variavel, width=14)
+            campo.grid(
                 row=linha, column=1, sticky="ew", padx=(12, 0), pady=3
             )
+            if variavel is self.a_var:
+                self.a_campo = campo
 
         ttk.Label(self, text="Tema do grafico").grid(row=6, column=0, sticky="w", pady=3)
         ttk.Combobox(
@@ -51,6 +54,21 @@ class Entrada(ttk.LabelFrame):
             row=7, column=0, columnspan=2, sticky="w", pady=(8, 0)
         )
         self.columnconfigure(1, weight=1)
+
+    def limpar(self):
+        """Restaura os campos de entrada para valores vazios."""
+        for variavel in (
+            self.a_var,
+            self.b_var,
+            self.c_var,
+            self.inicio_x_var,
+            self.fim_x_var,
+            self.quantidade_var,
+        ):
+            variavel.set("")
+        self.tema_var.set("Claro")
+        self.grade_var.set(True)
+        self.a_campo.focus_set()
 
     def obter_configuracao(self):
         """Valida os campos e retorna os valores prontos para a aplicacao."""
