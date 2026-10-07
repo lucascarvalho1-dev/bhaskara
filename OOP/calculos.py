@@ -4,7 +4,7 @@ import math
 
 
 class EquacaoSegundoGrau:
-    """Representa uma equacao ax^2 + bx + c = 0."""
+    """Equação do 2o grau ax2 + bx + c = 0 e seus cálculos."""
 
     def __init__(self, a, b, c):
         if a == 0:
@@ -14,7 +14,7 @@ class EquacaoSegundoGrau:
         self.c = c
 
     def calcular_delta(self):
-        """Calcula o discriminante da equacao."""
+        """Retorna o discriminante: b2 - 4ac."""
         return self.b ** 2 - 4 * self.a * self.c
 
     def calcular_raizes(self):
